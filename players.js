@@ -1,4 +1,4 @@
-{"players":
+﻿{"players":
 [
 	{
 		"name": "ASL联赛Kongdoo",
@@ -44,8 +44,7 @@
 			"KoManKUNSEKI",
 			"fa1con",
 			"Chalili",
-			"[neox]yong2",
-			"猥琐大神"
+			"[neox]yong2"
 		],
 		"broadNo": 0
 	},
