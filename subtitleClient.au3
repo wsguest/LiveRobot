@@ -7,10 +7,6 @@ Const $g_exe = "subtitle.exe"
 Const $tagCOPYDATASTRUCT = "ulong_ptr dwData;dword cbData;ptr lpData"
 Local $infoPosStyle = 6; 1 top-left; 2 top-center; 3 top-right; 4 bottom-left; 5 bottom-center; 6 bottom-right; 7 middle-right
 
-#cs
-_ShowInfoWindow("@8Œª÷√≤‚1 ‘")
-#ce
-
 Func _ShowInfoWindow($msg)
    Local $hWnd = WinGetHandle($g_infoWinTitle)
    If(@error <> 0) Then
