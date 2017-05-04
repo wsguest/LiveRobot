@@ -2,7 +2,6 @@
 #include "JSON.au3"
 #include <Date.au3>
 #include <Array.au3>
-#include <ScreenCapture.au3>
 #include "onlineClient.au3"
 #include "config.au3"
 
@@ -29,25 +28,21 @@ ProcessClose($vlcExe)
 ;加载选手名单
 _LoadPlayers()
 
-;_BroadcastAnyPlayer()
-;_Broadcast("冠军")
-;Sleep(5000)
-;_Broadcast("pusan大叔")
-;_AddBnid("bisu", "1102")
-;;_DebugOut(_GetPayerIdByName("小激动killer"))
-;;_DebugOut( _GetNameByBnid("hong"))
-;_ArrayDisplay(_GetOnlinePlayers(True))
 #cs
-While(True)
-   Sleep(5000);
-   Local $p = IsPlayingGame();
-   ConsoleWrite(_NowCalc() & " Playing: " & $p & @CRLF)
-WEnd
+_BroadcastAnyPlayer()
+_Broadcast("冠军")
+Sleep(5000)
+_Broadcast("pusan大叔")
+_AddBnid("bisu", "1102")
+ConsoleWrite(_GetPayerIdByName("小激动killer"))
+ConsoleWrite( _GetNameByBnid("hong"))
+_ArrayDisplay(_GetOnlinePlayers(True))
 #ce
+
 Func _LoadPlayers()
 	Local $allData = _JSONDecode(FileRead($g_PlayersFile))
 	$allPlayers = _JSONGet($allData, "players")
-	;_DebugOut("player list loaded")
+	;ConsoleWrite("player list loaded")
 	$allData = 0
 EndFunc
 Func _SavePlayers()
@@ -137,7 +132,7 @@ Func _AddBnid($playerName, $bnid)
 	$bnid = StringStripWS($bnid, 1+2)
 	If(StringLen($bnid) < 1) Then Return
 
-	Local $i, $j, $names = "  ";for last trim 2
+	Local $i, $j
 
 	For $i= 0 to UBound($allPlayers) - 1
 		Local $name = _JSONGet($allPlayers[$i], "name")
@@ -284,40 +279,4 @@ Func StopRecord()
 	ProcessClose($streamerRecordId)
 EndFunc
 
-;1280x760 16:9 support
-Func IsPlayingGame($threshold = 80, $any = True)
-   Local $hwnd = WinGetHandle($vlcTitle)
-   if(@error) Then Return False
 
-   Local $path = @ScriptDir & "\cv\"
-   Local $file = $path & "screen.png"
-   Local $template = $path & "template"
-   Local $checker =  $path & "TemplateMatch.exe"
-   Local $marginLeft = 4
-   Local $marginRight = 160
-   Local $marginTop = 0
-   Local $marginBottom = 0
-   Local $apos = WinGetPos($vlcTitle)
-   Local $videoWidth = $apos[2]; @DesktopWidth - $marginLeft - $marginRight; 800
-   Local $videoHeight = $apos[3];@DesktopHeight - $marginTop - $marginBottom; 600
-   Local $left = $apos[0] + $marginLeft
-   Local $top = Ceiling($videoHeight * 12.5 / 20 + $apos[1] + $marginTop)
-   Local $right = Ceiling($videoWidth * 7 / 20 + $left - 1)
-   Local $bottom = Floor($videoHeight * 2 / 20 + $top - 1)
-
-	_ScreenCapture_Capture($file, $left, $top, $right, $bottom)
-	For $i = 0 To 3
-		Local $rtn = RunWait($checker & " """ & $template & $i & ".png"" """ & $file & """", "", @SW_HIDE)
-		ConsoleWrite(" T" & $i & ":" & $rtn & " -> ")
-		If($any) Then
-			if (Int($rtn) > $threshold) Then
-				Return True
-			EndIf
-		Else
-			if (Int($rtn) < $threshold) Then
-				Return False
-			EndIf
-		EndIf
-	Next
-	Return (Not $any)
-EndFunc
