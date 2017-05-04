@@ -3,7 +3,7 @@
 
 ## 使用: ##
 + 先安装[LiveStreamer](https://github.com/chrippa/livestreamer/releases)
-+ 再安装VLC播放器(http://www.videolan.org/)
++ 再安装[VLC播放器](http://www.videolan.org/)
 + 将plugins中的插件拷贝到LiveStreamer安装目录的plugins文件夹，官方的插件目前还未更新，若已经更新则可跳过
 + 编辑live.ini，设置房间号，把所有sk2出现的地方替换成自己的房间号。房间号查找方法，star.longzhu.com/`房间号`
 + 启动longzhu.exe，自动下载房间配置
@@ -34,6 +34,3 @@
    这是我第一个用AutoIt写的工具，主要参考自带的帮助资料（F1）和这两个网站，其中[JSON.au3](https://www.autoitscript.com/forum/topic/104150-json-udf-library-fully-rfc4627-compliant/)和[wmplayer.au3](https://www.autoitscript.com/forum/topic/27352-windows-media-player-udf/)均来源于AutoIt社区
 + [AutoIt](https://www.autoitscript.com/site/) 
 + [中文社区](http://www.autoitx.com/)
-
-## 协议 ##
-+ GNU GPL，知道很难被遵守，但还是写上吧
