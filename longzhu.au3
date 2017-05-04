@@ -16,7 +16,7 @@ Opt('MustDeclareVars', 1)
 #include "robot.au3"
 #include "block.au3"
 #include "streamer.au3"
-#include "ScreenMatch.au3"
+#include "screenMatch.au3"
 #include "subtitleClient.au3"
 #include "onlineClient.au3"
 
