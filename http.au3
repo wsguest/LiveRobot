@@ -1,11 +1,5 @@
-#cs
-$url = "http://mbgo.plu.cn/chatroom/sendmsg2?group=2185&content=%E6%95%99%E4%B8%BB%E5%9C%A8%E5%90%97&color=0xff0000&style=1&callback=_callbacks_._1djsf0zixn9e4gz"
-$x = _HttpGet($url)
-ConsoleWrite($x)
-#ce
 
 #include-once
-
 Func _HttpGet($url, $timeout = 30)
 	Local $oXmlHttp = ObjCreate("Microsoft.XMLHTTP")
 	$oXmlHttp.Open("GET", $url , True)
@@ -67,7 +61,7 @@ Func _HttpPostX($url, $data, $timeout = 30, $refer = "", $cookie=" ")
 EndFunc
 
 
-;ConsoleWrite(_urlDecode(_urlEncode("¤¸¡îvÛ¾y©YL")) & @CRLF)
+;ConsoleWrite(_urlDecode(_urlEncode("Â¤Â¸Â¡Ã®vÂÃ›Â¾yÂ©YL")) & @CRLF)
 Func _EncodeURL($str, $plus = True)
     Local $i, $return, $tmp, $exp
     $return = ""
