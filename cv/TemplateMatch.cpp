@@ -1,4 +1,4 @@
-// TemplateMatch.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// TemplateMatch.cpp : å›¾åƒæ¨¡æ¿åŒ¹é…ï¼Œä¾èµ–opencvã€‚
 //
 
 #include "stdafx.h"
