@@ -13,13 +13,11 @@
 #include <WindowsConstants.au3>
 #include <StaticConstants.au3>
 #include <ColorConstants.au3>
-#include<FontConstants.au3>
+#include <FontConstants.au3>
 #include <WinAPI.au3>
 #include "subTitleClient.au3"
 Opt('MustDeclareVars', 1)
 Opt('TrayIconHide', 1)
-;#include<Debug.au3>
-;_DebugSetup("bzl", False, 4, "log.txt", True)
 
 Const $maxChars = 12; 12 chars in a line
 Const $maxLine = 2 ;
