@@ -8,7 +8,7 @@
 
 ;;push stream to url
 ;livestreamer -O -v afreeca.com/sblyh119 best | ffmpeg -i - -c:a libvo_aacenc -ab 64k -ar 44100 -c:v libx264 -f flv rtmp://pub.bogou.tv/cclive/********
-;--plugins-dir " & @ScriptDir & "
+;--plugins-dir " & @ScriptDir & "\plugins\"
 ;player="C:\Program Files\VideoLAN\VLC\vlc.exe" --file-caching=10000  --network-caching=10000 --audio-desync '-200'  --fullscreen
 Const $streamerCmd = "livestreamer.exe --retry-open 2 --hls-live-edge 10 --hls-segment-attempts 60 --hls-segment-threads 10" & _
 		" --hls-segment-timeout 2 --hls-timeout 60 --ringbuffer-size 32M afreeca.com/%s best"
@@ -18,23 +18,23 @@ Local $streamerId = 0
 Const $vlcExe = "vlc.exe"
 Const $vlcTitle = "fd://0 - VLC media player"
 Local $vlcId = 0
-;ÔÚÏßÑ¡ÊÖÉèÖÃ
+;åœ¨çº¿é€‰æ‰‹è®¾ç½®
 
-Global $g_currentPlayer="failed ";ÕıÔÚ²¥·ÅµÄÑ¡ÊÖ
+Global $g_currentPlayer="failed ";æ­£åœ¨æ’­æ”¾çš„é€‰æ‰‹
 Local $broadcastStatus = "normal "
-Local $allPlayers;ËùÓĞÑ¡ÊÖÊı¾İ
-;¹Ø±ÕÖ®Ç°µÄ´°¿Ú
+Local $allPlayers;æ‰€æœ‰é€‰æ‰‹æ•°æ®
+;å…³é—­ä¹‹å‰çš„çª—å£
 WinClose($vlcTitle)
 ProcessClose($vlcExe)
-;¼ÓÔØÑ¡ÊÖÃûµ¥
+;åŠ è½½é€‰æ‰‹åå•
 _LoadPlayers()
 
 ;_BroadcastAnyPlayer()
-;_Broadcast("¹Ú¾ü")
+;_Broadcast("å† å†›")
 ;Sleep(5000)
-;_Broadcast("pusan´óÊå")
+;_Broadcast("pusanå¤§å”")
 ;_AddBnid("bisu", "1102")
-;;_DebugOut(_GetPayerIdByName("Ğ¡¼¤¶¯killer"))
+;;_DebugOut(_GetPayerIdByName("å°æ¿€åŠ¨killer"))
 ;;_DebugOut( _GetNameByBnid("hong"))
 ;_ArrayDisplay(_GetOnlinePlayers(True))
 #cs
@@ -60,7 +60,7 @@ EndFunc
 
 Func _UpdatePlayers($forceUpdate = False)
 	Static $UpdateTime = _NowCalc()
-	If((Not $forceUpdate) And _DateDiff("s", $UpdateTime, _NowCalc()) < 300) Then Return;300ÃëÄÚ²»ÔÙ¸üĞÂ
+	If((Not $forceUpdate) And _DateDiff("s", $UpdateTime, _NowCalc()) < 300) Then Return;300ç§’å†…ä¸å†æ›´æ–°
 	_UpdatePlayersStatus($allPlayers)
 	$UpdateTime = _NowCalc()
 EndFunc
@@ -158,18 +158,18 @@ Func _IsOnline($playerId)
 	Local $broadNo = _GetBroadNo($playerId)
 	Return $broadNo <> 0
 EndFunc
-;²¥·ÅÄ³¸öÑ¡ÊÖ£¬×Ü¼ÆµÈ´ıÊ±¼äÔÚ90ÃëÒÔÄÚ£¬¼ì²âÊ§°ÜÓ¦¸ÃÖÁÉÙ90Ãë
+;æ’­æ”¾æŸä¸ªé€‰æ‰‹ï¼Œæ€»è®¡ç­‰å¾…æ—¶é—´åœ¨90ç§’ä»¥å†…ï¼Œæ£€æµ‹å¤±è´¥åº”è¯¥è‡³å°‘90ç§’
 ; -1=error name, -2=error Id, -3=not online, -4=run failed, -5=player not fullscreen
 Func _Broadcast($playerName, $force = False)
 	If(StringLen($playerName) < 1) Then Return -1
-	;Ç¿ÖÆ½áÊø
+	;å¼ºåˆ¶ç»“æŸ
 	if((Not $force) And ($g_currentPlayer == $playerName) And ProcessExists($vlcId)) Then
 		Return 3
 	ElseIf(_IsBroadcasting()) Then
 		Return 2
 	EndIf
 
-	;Èç¹ûÒÔ/´òÍ·ÔòÖ±½ÓÇĞ»»
+	;å¦‚æœä»¥/æ‰“å¤´åˆ™ç›´æ¥åˆ‡æ¢
 	Local $playerId = _GetPlayerIdByName($playerName)
 	If($playerId == "") Then Return -2
 	If(_IsOnline($playerId) ==  False) Then Return -3;
@@ -228,7 +228,7 @@ Func _Broadcast($playerName, $force = False)
 		$s = BitAnd($aStyle[0], 0x40000)
 		$maxWaitFullScreen -= 1
 	Until ($s == 0) Or ($maxWaitFullScreen < 1)
-	if($maxWaitFullScreen < 1 and $s <> 0) Then ;10ÃëÖ®ÄÚÃ»¸ã¶¨ÔÙµÈ5s
+	if($maxWaitFullScreen < 1 and $s <> 0) Then ;10ç§’ä¹‹å†…æ²¡æå®šå†ç­‰5s
 		Sleep(5000)
 		;send("!{alt}")
 		;send("f")
@@ -253,12 +253,12 @@ Func _CheckBroadcastStatus($periodSecond)
 EndFunc
 
 Func _BroadcastAnyPlayer()
-	;ÉÏÒ»Ñ¡ÊÖÓÅÏÈ
+	;ä¸Šä¸€é€‰æ‰‹ä¼˜å…ˆ
 	if(StringLen($g_currentPlayer) < 1) Then $g_currentPlayer = GetRoomConfig("LastPlayer")
 	If(_Broadcast($g_currentPlayer, True) > 0) Then Return
 	_UpdatePlayersStatus($allPlayers)
 	Local $i
-	;´ÓÍ·¿ªÊ¼ÊÔ×Å²¥·Å
+	;ä»å¤´å¼€å§‹è¯•ç€æ’­æ”¾
 	For $i=0 to UBound($allPlayers) - 1
 		Local $broadNo = _JSONGet($allPlayers[$i], "broadNo")
 		Local $name = _JSONGet($allPlayers[$i], "name")
