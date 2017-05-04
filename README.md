@@ -8,7 +8,7 @@
 + 编辑live.ini，设置房间号，把所有sk2出现的地方替换成自己的房间号。房间号查找方法，打开直播页：http://star.longzhu.com/[房间号]
 + 启动longzhu.exe，自动下载房间配置
 + 启动后在直播间聊天栏输入指令，指令一般以/打头，具体参考下一节: 支持的指令
-+ 需要聊天功能还需配置Live.ini中的RobotKey以及RobotName，参见这个链接(http://www.tuling123.com/)，在聊天栏@机器人名字，机器人会回复
++ 需要聊天功能还需配置Live.ini中的RobotKey以及RobotName，参见这个[链接](http://www.tuling123.com/)，在聊天栏@机器人名字，机器人会回复
 + 
 
 ## 支持的指令 ##
