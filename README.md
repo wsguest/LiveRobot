@@ -31,9 +31,9 @@
 + 1595152095 @qq.com
 
 ## 关于 AutoIt: ##
+这是我第一个用AutoIt写的工具，主要参考自带的帮助资料（F1）和这两个网站，其中JSON.au3和wmplayer.au3均来源于社区
 + [ AutoIt ](https://www.autoitscript.com/site/) 
 + [中文社区](http://www.autoitx.com/)
-这也是我第一个用AutoIt写的工具，主要参考自带的资料和这两个社区
 
 ## 协议 ##
-+ GNU GPL，知道也很难被遵守，但还是写上吧
++ GNU GPL，知道很难被遵守，但还是写上吧
