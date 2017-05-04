@@ -5,7 +5,7 @@
 + 先安装[LiveStreamer](https://github.com/chrippa/livestreamer/releases)
 + 再安装VLC播放器(http://www.videolan.org/)
 + 将plugins中的插件拷贝到LiveStreamer安装目录的plugins文件夹，官方的插件目前还未更新，若已经更新则可跳过
-+ 编辑live.ini，设置房间号，把所有sk2出现的地方替换成自己的房间号。房间号查找方法，star.longzhu.com/<font color=red>房间号</font>
++ 编辑live.ini，设置房间号，把所有sk2出现的地方替换成自己的房间号。房间号查找方法，star.longzhu.com/`房间号`
 + 启动longzhu.exe，自动下载房间配置
 + 启动后在直播间聊天栏输入指令，指令一般以/打头，具体参考下一节: 支持的指令
 + 需要聊天功能还需配置Live.ini中的RobotKey以及RobotName，参见这个[链接](http://www.tuling123.com/)，在聊天栏@机器人名字，机器人会回复
@@ -31,7 +31,7 @@
 + 1595152095 @qq.com
 
 ## 关于 AutoIt: ##
-这是我第一个用AutoIt写的工具，主要参考自带的帮助资料（F1）和这两个网站，其中JSON.au3和wmplayer.au3均来源于社区
+   这是我第一个用AutoIt写的工具，主要参考自带的帮助资料（F1）和这两个网站，其中JSON.au3和wmplayer.au3均来源于社区
 + [ AutoIt ](https://www.autoitscript.com/site/) 
 + [中文社区](http://www.autoitx.com/)
 
