@@ -22,7 +22,7 @@ LoadConfig()
 
 Func LoadConfig()
 	Local $iniFile = $g_configFile
-	Const $urlPrefix="http://star.longzhu.com/"
+	Const $urlPrefix="http://star.longzhu.com/" ;http://api.plu.cn/tga/streams/$room return json
 	
 	Local $room = IniRead($iniFile, $baseSection, "Room", "")
 	If ($room == "") Then
