@@ -31,8 +31,8 @@
 + 1595152095 @qq.com
 
 ## 关于 AutoIt: ##
-   这是我第一个用AutoIt写的工具，主要参考自带的帮助资料（F1）和这两个网站，其中JSON.au3和wmplayer.au3均来源于社区
-+ [ AutoIt ](https://www.autoitscript.com/site/) 
+   这是我第一个用AutoIt写的工具，主要参考自带的帮助资料（F1）和这两个网站，其中[JSON.au3](https://www.autoitscript.com/forum/topic/104150-json-udf-library-fully-rfc4627-compliant/)和[wmplayer.au3](https://www.autoitscript.com/forum/topic/27352-windows-media-player-udf/)均来源于AutoIt社区
++ [AutoIt](https://www.autoitscript.com/site/) 
 + [中文社区](http://www.autoitx.com/)
 
 ## 协议 ##
