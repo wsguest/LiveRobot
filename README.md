@@ -2,14 +2,15 @@
 # An assitant for 24-hour rebroadcasting afreeca streams in AutoIt，Longzhu.com version
 
 ## 使用: ##
-+ 先安装[LiveStreamer](https://github.com/chrippa/livestreamer/releases)
-+ 再安装[VLC播放器](http://www.videolan.org/)
-+ 将plugins中的插件拷贝到LiveStreamer安装目录的plugins文件夹，官方的插件目前还未更新，若已经更新则可跳过
-+ 编辑live.ini，设置房间号，把所有sk2出现的地方替换成自己的房间号。房间号查找方法，star.longzhu.com/`房间号`
-+ 启动longzhu.exe，自动下载房间配置
-+ 启动后在直播间聊天栏输入指令，指令一般以/打头，具体参考下一节: 支持的指令
-+ 需要聊天功能还需配置Live.ini中的RobotKey以及RobotName，参见这个[链接](http://www.tuling123.com/)，在聊天栏@机器人名字，机器人会回复
-+ 其他更多配置参考Live.ini中的注释
+1. 先安装[LiveStreamer](https://github.com/chrippa/livestreamer/releases)
+1. 再安装[VLC播放器](http://www.videolan.org/)
+1. 将plugins中的插件拷贝到LiveStreamer安装目录的plugins文件夹，官方的插件目前还未更新，若已经更新则可跳过
+1. 编辑live.ini，设置房间号，把所有sk2出现的地方替换成自己的房间号。房间号查找方法，star.longzhu.com/`房间号`
+1. 启动longzhu.exe，自动下载房间配置
+1. 启动后在直播间聊天栏输入指令，指令一般以/打头，具体参考下一节: 支持的指令
+
++ 需要聊天功能还需配置live.ini中的RobotKey以及RobotName，参见这个[链接](http://www.tuling123.com/)，在聊天栏@机器人名字，机器人会回复
++ 其他更多配置参考live.ini中的注释
 
 ## 支持的指令 ##
 + /online：查看在线列表，由于直播间发言限制，会自动启动online.exe在桌面显示在线列表
@@ -31,6 +32,6 @@
 + 1595152095 @qq.com
 
 ## 关于 AutoIt: ##
-    这是我第一个用AutoIt写的工具，不太成熟，主要参考自带的帮助资料（F1）和这两个网站，其中[JSON.au3](https://www.autoitscript.com/forum/topic/104150-json-udf-library-fully-rfc4627-compliant/)和[wmplayer.au3](https://www.autoitscript.com/forum/topic/27352-windows-media-player-udf/)均来源于AutoIt社区
+  这是我第一个用AutoIt写的工具，不太成熟，主要参考自带的帮助资料（F1）和这两个网站，其中[JSON.au3](https://www.autoitscript.com/forum/topic/104150-json-udf-library-fully-rfc4627-compliant/)和[wmplayer.au3](https://www.autoitscript.com/forum/topic/27352-windows-media-player-udf/)均来源于AutoIt社区
 + [AutoIt](https://www.autoitscript.com/site/) 
 + [中文社区](http://www.autoitx.com/)
