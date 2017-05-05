@@ -23,14 +23,14 @@ Next
 Local $x = PlayMusic("only time")
 ConsoleWrite($x & @CrLF)
 Sleep(10000)
-Local $x = PlayMusic("º£À«Ìì¿Õ beyond")
+Local $x = PlayMusic("æµ·é˜”å¤©ç©º beyond")
 ConsoleWrite($x & @CrLF)
 Sleep(10000)
-ConsoleWrite( PlayMusic("ºì¶¹ Íõ·Æ")& @CrLF)
+ConsoleWrite( PlayMusic("çº¢è±† çŽ‹è²")& @CrLF)
 Sleep(10000)
 PlayMusic("@50")
 Sleep(3000)
-ConsoleWrite( PlayMusic("Ð¡°×Ñî ÅíÀöæÂ"))
+ConsoleWrite( PlayMusic("å°ç™½æ¨ å½­ä¸½åª›"))
 Sleep(10000)
 StopMusic()
 #ce
@@ -41,7 +41,7 @@ Func PlayMusic($strText)
 	EndIf
 	Local $sinfo = ""
 	Local $param = StringStripWS(StringMid($strText, 2), 3)
-	If(StringLeft($strText, 1) == "@") Then ; ÒôÁ¿
+	If(StringLeft($strText, 1) == "@") Then ; éŸ³é‡
 		If(StringIsDigit($param)) Then
 			Local $volume = int($param)
 			if($volume >= 0 and $volume <= 100) Then
@@ -50,7 +50,7 @@ Func PlayMusic($strText)
 			EndIf
 		EndIf
 	EndIf
-	$strText = StringStripWS($strText, 3) ;È¥µô¿Õ°×
+	$strText = StringStripWS($strText, 3) ;åŽ»æŽ‰ç©ºç™½
 	Local $url = _GetMusic($strText, $sinfo)
 	;ConsoleWrite("music url:" & $url & @CRLF)
 	if($url <> Default) Then _wmploadmedia($objPlayer, $url)
@@ -63,9 +63,9 @@ Func StopMusic()
 	EndIf
 EndFunc
 
-Func SetVolume($persent)
+Func SetVolume($percent)
 	If(IsObj($objPlayer)) Then
-		_wmpsetvalue($objPlayer, "volume", $persent)
+		_wmpsetvalue($objPlayer, "volume", $percent)
 	EndIf
 EndFunc
 
@@ -180,7 +180,7 @@ EndFunc
 
 Func _GetKugouMusic($name, ByRef $Info)
 	Const $searchUrl = "http://songsearch.kugou.com/song_search_v2?platform=WebFilter&keyword="
-	Const $infoUrl = "http://www.kugou.com/yy/index.php?r=play/getdata&hash="; acc¿ÉÎªmp3
+	Const $infoUrl = "http://www.kugou.com/yy/index.php?r=play/getdata&hash="; accå¯ä¸ºmp3
 	Local $rtn = _HttpGet($searchUrl & _EncodeURL($name))
 	IF(StringLen($rtn) > 8) Then
 		Local $result = _JSONDecode($rtn)
@@ -200,7 +200,7 @@ EndFunc
 
 Func _GetKuwoMusic($name, ByRef $Info)
 	Const $searchUrl = "http://search.kuwo.cn/r.s?ft=music&rformat=json&encoding=utf8&rn=1&SONGNAME="
-	Const $infoUrl = "http://antiserver.kuwo.cn/anti.s?type=convert%5Furl&response=url&format=aac%7Cmp3&rid="; acc¿ÉÎªmp3
+	Const $infoUrl = "http://antiserver.kuwo.cn/anti.s?type=convert%5Furl&response=url&format=aac%7Cmp3&rid="; accå¯ä¸ºmp3
 	Local $rtn = _HttpGet($searchUrl & _EncodeURL($name))
 	IF(StringLen($rtn) > 8) Then
 		Local $result = _JSONDecode($rtn, "", True)
