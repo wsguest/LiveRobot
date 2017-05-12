@@ -22,7 +22,7 @@ Func _ShowOnline($show = True)
 	Local $flag = @SW_SHOW
 	If(Not $show) Then $flag = @SW_HIDE
 	WinSetState($OnlineTitle, "", $flag)
-	WinSetOnTop($OnlineTitle, "", $WINDOWS_ONTOP)
+	WinSetOnTop($OnlineTitle, "", 1);$WINDOWS_ONTOP
 EndFunc
 
 Func _GetOnlinePlayers()

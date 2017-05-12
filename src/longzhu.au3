@@ -16,7 +16,7 @@ Opt('MustDeclareVars', 1)
 #include "robot.au3"
 #include "block.au3"
 #include "streamer.au3"
-#include "screenMatch.au3"
+#include "./cv/screenMatch.au3"
 #include "subtitleClient.au3"
 #include "onlineClient.au3"
 
@@ -482,7 +482,7 @@ Func OnChatCmd($id, $userName, $content)
 			SetNotice($notice)
 		EndIf
 		Return
-	Case $tm == "record"
+	Case (StringLeft($tm, 6) == "record") 
 		If(Not (IsManager($id))) Then
 			SendMsg("对不起，您现在还不是管理员或者不在日榜。@" & $userName)
 			Return
@@ -685,8 +685,8 @@ Func Try2Broadcast($playerName, $username="", $isAdmin=false)
 	Static $lastSwitch = "2014/11/25 17:09:07"
 	if(_DateDiff("s",$lastSwitch, _NowCalc()) < 30 And (Not $isAdmin)) Then Return;非管理员切换频率控制在30s以上
 	if(StringLeft($playerName, 1) == "/") then
-		SendMsg("对不起, 现在不能自由切换了，原因自己猜。 @" & $username )
-		Return
+		;SendMsg("对不起, 现在不能自由切换了，原因自己猜。 @" & $username )
+		;Return
 	EndIf
 
 	if(Not _IsPlayerName($playerName, True)) Then

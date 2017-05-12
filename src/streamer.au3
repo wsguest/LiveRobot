@@ -14,16 +14,14 @@ Const $streamerCmd = "livestreamer.exe --retry-open 2 --hls-live-edge 10 --hls-s
 Const $streamerRecordCmd = "livestreamer.exe --retry-open 5 star.longzhu.com/%s best -f -o %s"
 Local $streamerRecordId = 0
 Local $streamerId = 0
-Const $vlcExe = "vlc.exe"
-Const $vlcTitle = "fd://0 - VLC media player"
+Const $vlcExe = $g_VideoPlayer
 Local $vlcId = 0
 ;在线选手设置
 
-Global $g_currentPlayer="failed ";正在播放的选手
+Global $g_currentPlayer="failed";正在播放的选手
 Local $broadcastStatus = "normal "
 Local $allPlayers;所有选手数据
-;关闭之前的窗口
-WinClose($vlcTitle)
+;关闭之前的播放窗口
 ProcessClose($vlcExe)
 ;加载选手名单
 _LoadPlayers()
@@ -211,7 +209,8 @@ Func _Broadcast($playerName, $force = False)
 	$g_currentPlayer = $playerName
 	SetRoomConfig("LastPlayer", $g_currentPlayer)
 	$broadcastStatus = "normal " & $playerName
-	;#cs
+	#cs
+	;; set in livestreamer parameters e.g. player="C:\Program Files\VideoLAN\VLC\vlc.exe" --file-caching=10000  --network-caching=10000 --audio-desync '-200'  --fullscreen
 	;fullscreen
 	Local $maxWaitFullScreen = 10, $s = 1, $hv = WinGetHandle($vlcTitle)
 	SendKeepActive($hv)
@@ -229,7 +228,7 @@ Func _Broadcast($playerName, $force = False)
 		;send("f")
 	EndIf
 	SendKeepActive("")
-	;#ce
+	#ce
 	Return 1
 EndFunc
 
@@ -249,8 +248,10 @@ EndFunc
 
 Func _BroadcastAnyPlayer()
 	;上一选手优先
-	if(StringLen($g_currentPlayer) < 1) Then $g_currentPlayer = GetRoomConfig("LastPlayer")
-	If(_Broadcast($g_currentPlayer, True) > 0) Then Return
+	if(StringLen($g_currentPlayer) < 1 Or StringInStr($g_currentPlayer, "failed") > 0) Then $g_currentPlayer = GetRoomConfig("LastPlayer")
+	If(StringLen($g_currentPlayer) > 2) Then
+		If(_Broadcast($g_currentPlayer, True) > 0) Then Return
+	EndIf
 	_UpdatePlayersStatus($allPlayers)
 	Local $i
 	;从头开始试着播放
@@ -264,7 +265,7 @@ Func _BroadcastAnyPlayer()
 EndFunc
 
 Func StartRecord($domain, $filePath)
-	If(ProcessExists($streamerRecordId)) Then Return Return True
+	If(ProcessExists($streamerRecordId)) Then Return True
 	Local $cmd = StringFormat($streamerRecordCmd, $domain, $filePath)
 	$streamerRecordId = Run($cmd, "", @SW_HIDE)
 	Sleep(3000)

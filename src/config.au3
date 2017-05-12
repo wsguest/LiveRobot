@@ -12,6 +12,7 @@ Global $g_hostName, $g_hostId, $g_robotName, $g_robotKey, $g_roomId, $g_onliving
 Global $g_enableChat, $g_enableSpeech, $g_speechEngine, $g_enableBlock, $g_blockSeconds, $g_kickOut
 Global $g_thankFlower,$g_thankGift,$g_flowerMsgTemplate,$g_giftMsgMsgTemplate, $g_responseGrade, $g_enableAutoLock
 Global $g_UserRankList, $g_Gifts, $g_blockKeysFile, $g_PlayersFile
+Global $g_VideoPlayer = "vlc.exe"
 Global $g_Version = ""
 Global $g_VodPath = @ScriptDir
 
@@ -23,7 +24,7 @@ LoadConfig()
 Func LoadConfig()
 	Local $iniFile = $g_configFile
 	Const $urlPrefix="http://star.longzhu.com/" ;http://api.plu.cn/tga/streams/$room return json
-	
+	$g_VideoPlayer = IniRead($iniFile, $baseSection, "Player", "vlc.exe")
 	Local $room = IniRead($iniFile, $baseSection, "Room", "")
 	If ($room == "") Then
 		MsgBox(16, "", "配置文件出错，请修改配置文件填写直播间")
@@ -86,6 +87,7 @@ Func LoadConfig()
 	$g_blockKeysFile = IniRead($iniFile, $roomSecion, "BlockKeysFile", "")
 	$g_PlayersFile = IniRead($iniFile, $roomSecion, "PlayersFile", "")
 	$g_VodPath = IniRead($iniFile, $roomSecion, "VodPath", @ScriptDir & "\vod\")
+	
 	$g_Version = FileGetVersion(@AutoItExe)
 	;load gifts
 	Local $giftAllUrl = "http://configapi.plu.cn/item/getallitems"
