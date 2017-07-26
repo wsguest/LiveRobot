@@ -1,7 +1,7 @@
 ﻿#Region ;**** 由 AccAu3Wrapper_GUI 创建指令 ****
 #AccAu3Wrapper_Icon=./icons/icon.ico
 #AccAu3Wrapper_OutFile=Longzhu.exe
-#AccAu3Wrapper_Res_Fileversion=2.1.3.3
+#AccAu3Wrapper_Res_Fileversion=2.1.3.4
 #AccAu3Wrapper_Res_FileVersion_AutoIncrement=Y
 #AccAu3Wrapper_Res_Language=2052
 #AccAu3Wrapper_Res_requestedExecutionLevel=None
@@ -282,7 +282,7 @@ Func OnChatMsg($id, $content, $userName, $type = "user")
 		$msg[3] = "要是长时间卡住使用'/restart'重新启动直播"
 		$msg[4] = "主播，水友喊你来看看咋回事"
 		$msg[5] = "送花保不卡，打赏看高清"
-		$msg[6] = "快把鲜花送出来"
+		$msg[6] = "快把礼物送出来"
 		$msg[7] = "是你网络不行吧？少撸多干活，攒钱扩带宽吧，年轻人。"
 		Local $r = Random(0, 7, 1)
 		SendMsg($msg[$r])
@@ -890,23 +890,31 @@ Func _CheckRoomStatus()
 EndFunc
 
 Func RestartLiveApp()
-	Local $hWnd = WinGetHandle("嗨播")
+	Local $hWnd = WinGetHandle("嗨播","MainWidgetWindow")
 	If @error <> 0 Then
+	   Return
 		Run(@ProgramFilesDir & "\Haibo\hibo.exe")
 		Sleep(50000)
 	Endif
-	WinActivate ($hWnd)
+
 	WinSetState ($hWnd, "", @SW_RESTORE)
+	WinActivate ($hWnd)
+	WinSetOnTop($hWnd, "", 1)
+	SendKeepActive($hWnd)
+
 	Sleep(500)
 	Send("{space}")
 	Sleep(500)
 	Send("{enter}")
 	Sleep(500)
+	SendKeepActive("")
 	WinMove($hWnd, "", 0, 0)
 	Sleep(500)
-	MouseClick("left", 30, 538, 1, 0)
-	Sleep(500)
+	MouseClick("left", 90, 630, 1, 0)
+	Sleep(1000)
+	WinSetOnTop($hWnd, "", 0)
 	WinSetState ($hWnd, "", @SW_MINIMIZE)
+
 EndFunc
 
 Func IsManager($id)
